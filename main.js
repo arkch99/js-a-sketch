@@ -1,6 +1,7 @@
 function drawGrid(nCells)
 {
 	const drScreen = document.querySelector(".draw-screen");
+	drScreen.innerHTML = ""; //delete any existing cells
 	drScreen.style.gridTemplateColumns = `repeat(${nCells}, auto)`;
 	drScreen.style.gridTemplateRows = `repeat(${nCells}, auto)`;
 
@@ -17,7 +18,8 @@ function drawGrid(nCells)
 	}
 }
 
-function clear(e){
+function clear()
+{
 	//console.log(e);
 	const cells = Array.from(document.querySelectorAll(".sketch-cell"));
 	console.log(cells);
@@ -26,7 +28,21 @@ function clear(e){
 	});
 }
 
-document.getElementById("reset").addEventListener("click", clear);
-/*
+function newGrid()
+{
+	nCells = prompt("Enter number of cells per side. WARNING: Values over 400 may cause instability!");
+	clear();
+	drawGrid(nCells);
+}
+
+
+function init()
+{
+	document.getElementById("reset").addEventListener("click", clear);
+	document.getElementById("new").addEventListener("click", newGrid);
 	drawGrid(16);
-*/
+}
+
+init();
+
+
