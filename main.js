@@ -8,7 +8,7 @@ function drawGrid(nCells)
 	{
 		let cell = document.createElement("div");
 		cell.style = "border-style: solid; border-width: 1px;";
-		//cell.classList.add("sketch-cell");
+		cell.classList.add("sketch-cell");
 		cell.addEventListener("mouseover", (e) => {
 			//console.log(e);
 			e.target.style.backgroundColor = "blue";
@@ -17,3 +17,16 @@ function drawGrid(nCells)
 	}
 }
 
+function clear(e){
+	//console.log(e);
+	const cells = Array.from(document.querySelectorAll(".sketch-cell"));
+	console.log(cells);
+	cells.forEach(cell => {
+		cell.style.backgroundColor = "white";
+	});
+}
+
+document.getElementById("reset").addEventListener("click", clear);
+/*
+	drawGrid(16);
+*/
