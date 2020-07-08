@@ -1,0 +1,6 @@
+.draw-screen{
+	display: grid;
+	height: 480px;
+	width: 640px;
+	border-style: solid;
+}
