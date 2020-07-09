@@ -10,17 +10,25 @@ function drawGrid(nCells)
 		let cell = document.createElement("div");
 		cell.style = "border-style: solid; border-width: 1px;";
 		cell.classList.add("sketch-cell");
-		cell.addEventListener("mouseover", (e) => {
-			//console.log(e);
-			e.target.style.backgroundColor = "blue";
-		});
+		cell.nAccessLeft = 10;
+		cell.addEventListener("mouseover", colourise);
 		drScreen.appendChild(cell);
+	}
+}
+
+function colourise(e)
+{
+	let colorVal = e.target.nAccessLeft;
+	colorVal *= 10; //start from rgb values of 100
+	e.target.style.backgroundColor = `rgb(${colorVal}, ${colorVal}, ${colorVal})`;
+	if(e.target.nAccessLeft) //prevent it from becoming negative
+	{
+		e.target.nAccessLeft--; //go down to 0
 	}
 }
 
 function clear()
 {
-	//console.log(e);
 	const cells = Array.from(document.querySelectorAll(".sketch-cell"));
 	console.log(cells);
 	cells.forEach(cell => {
